@@ -29,6 +29,9 @@ public enum ErrorCode {
     //problem
     PROBLEM_NOT_FOUND(404, "Problem Not Found"),
 
+    //completion
+    COMPLETION_NOT_FOUND(404, "Completion Not Found"),
+
     // general
     BAD_REQUEST(400, "프론트 탓"),
     INTERNAL_SERVER_ERROR(500, "서버 탓");
