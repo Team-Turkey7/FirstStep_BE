@@ -1,6 +1,5 @@
-package com.example.firststep_server.domain.problem.domain.service;
+package com.example.firststep_server.domain.problem.service;
 
-import com.example.firststep_server.domain.problem.domain.UserIncorrectAnswer;
 import com.example.firststep_server.domain.problem.domain.repository.UserIncorrectAnswerRepository;
 import com.example.firststep_server.domain.problem.presentation.dto.response.WrongProblemResponse;
 import lombok.RequiredArgsConstructor;
