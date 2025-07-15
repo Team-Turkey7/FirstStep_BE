@@ -18,7 +18,9 @@ public class CreateProblemService {
                         .date(createProblemRequest.getDate())
                         .problem(createProblemRequest.getProblem())
                         .problemDetail(createProblemRequest.getProblemDetail())
+                        .isCorrect(false)
                         .photoUrl(createProblemRequest.getPhotoUrl())
+                        .audioUrl(createProblemRequest.getAudioUrl())
                         .build()
         );
     }
