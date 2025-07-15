@@ -21,6 +21,10 @@ public enum ErrorCode {
     INVALID_USER(401, "유효 하지 않은 사용자입니다."),
     USER_EXIST(401, "유저가 이미 존재합니다."),
 
+    //s3
+    IMAGE_NOT_FOUND(404, "이미지를 찾을 수 없음"),
+    FAILED_UPLOAD(1001, "업로드 실패"),
+    FAILED_DELETE(1002, "삭제 실패"),
 
     // general
     BAD_REQUEST(400, "프론트 탓"),
