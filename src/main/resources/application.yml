@@ -1,0 +1,16 @@
+jwt:
+  header: Authorization
+  prefix: Bearer
+  accessExpiration: 3600
+  refreshExpiration: 604800
+  secretKey: ${JWT_SECRET_KEY}
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    url: ${DB_URL}
+    username: ${DB_NAME}
+    password: ${DB_PASSWORD}
