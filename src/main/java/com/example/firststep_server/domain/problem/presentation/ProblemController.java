@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,8 +25,10 @@ public class ProblemController {
     private final JudgeProblemService judgeProblemService;
 
     @PostMapping
-    public void createProblem(@RequestBody CreateProblemRequest request) {
-        createProblemService.createProblem(request);
+    public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
+                              @RequestPart(name = "audio") MultipartFile audio,
+                              @RequestPart(name = "image") MultipartFile image) {
+        createProblemService.createProblem(audio, image, request);
     }
 
     @GetMapping("/{date}")
