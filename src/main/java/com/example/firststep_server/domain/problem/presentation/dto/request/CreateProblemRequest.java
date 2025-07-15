@@ -12,5 +12,7 @@ public class CreateProblemRequest {
     private String date;
     private String problem;
     private String problemDetail;
+    private boolean isCorrect;
     private String photoUrl;
+    private String audioUrl;
 }
