@@ -43,7 +43,7 @@ public class ProblemController {
         return queryCompletionStatusService.execute(date);
     }
 
-    @GetMapping("/judge")
+    @PostMapping("/judge")
     @ResponseStatus(HttpStatus.OK)
     public boolean judge(@RequestBody @Valid JudgementProblemRequest request) {
         return judgeProblemService.execute(request);
