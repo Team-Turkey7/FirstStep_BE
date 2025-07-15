@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ProblemRepository extends CrudRepository<Problem, Long> {
-    List<ProblemResponse> findByDate(String date);
+    List<ProblemResponse> findByDateOrderByIdAsc(String date);
 }

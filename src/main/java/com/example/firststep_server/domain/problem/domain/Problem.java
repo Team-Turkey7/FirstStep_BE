@@ -41,4 +41,8 @@ public class Problem {
     private String photoUrl;
 
     private String audioUrl;
+
+    public void markAsCorrect() {
+        this.isCorrect = true;
+    }
 }

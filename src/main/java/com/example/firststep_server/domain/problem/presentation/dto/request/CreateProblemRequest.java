@@ -5,12 +5,10 @@ import lombok.Getter;
 
 @Getter
 public class CreateProblemRequest {
+
     private Category category;
     private String date;
     private String problem;
     private String problemDetail;
     private String photoUrl;
-    private String answer;
-    private String audioUrl;
-    private int level;
 }
