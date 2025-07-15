@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class CreateProblemService {
     private final ProblemRepository problemRepository;
 
-    public void createProblem(CreateProblemRequest createProblemRequest) {
+    public void excute(CreateProblemRequest createProblemRequest) {
         problemRepository.save(
                 Problem.builder()
                         .category(createProblemRequest.getCategory())

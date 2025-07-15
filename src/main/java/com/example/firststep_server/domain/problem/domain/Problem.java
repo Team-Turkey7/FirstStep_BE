@@ -41,5 +41,4 @@ public class Problem {
     private String photoUrl;
 
     private String audioUrl;
-
 }
