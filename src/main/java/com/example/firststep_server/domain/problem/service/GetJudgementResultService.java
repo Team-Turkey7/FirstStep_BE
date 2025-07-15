@@ -3,6 +3,7 @@ package com.example.firststep_server.domain.problem.service;
 import com.example.firststep_server.domain.problem.domain.UserIncorrectAnswer;
 import com.example.firststep_server.domain.problem.domain.repository.ProblemRepository;
 import com.example.firststep_server.domain.problem.domain.repository.UserIncorrectAnswerRepository;
+import com.example.firststep_server.domain.problem.presentation.dto.response.AnswerJudgementResponse;
 import com.example.firststep_server.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
