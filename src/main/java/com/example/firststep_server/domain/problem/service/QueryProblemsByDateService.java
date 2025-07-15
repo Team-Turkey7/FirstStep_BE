@@ -15,6 +15,6 @@ public class QueryProblemsByDateService {
 
     @Transactional(readOnly = true)
     public List<ProblemResponse> execute(String date) {
-        return problemRepository.findByDate(date);
+        return problemRepository.findByDateOrderByIdAsc(date);
     }
 }
