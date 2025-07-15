@@ -27,7 +27,4 @@ public class UserIncorrectAnswer {
 
     private String date;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private User user;
 }
