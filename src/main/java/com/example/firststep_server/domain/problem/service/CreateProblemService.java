@@ -12,5 +12,14 @@ public class CreateProblemService {
     private final ProblemRepository problemRepository;
 
     public void createProblem(CreateProblemRequest createProblemRequest) {
+        problemRepository.save(
+                Problem.builder()
+                        .category(createProblemRequest.getCategory())
+                        .date(createProblemRequest.getDate())
+                        .problem(createProblemRequest.getProblem())
+                        .problemDetail(createProblemRequest.getProblemDetail())
+                        .photoUrl(createProblemRequest.getPhotoUrl())
+                        .build()
+        );
     }
 }
