@@ -1,3 +1,3 @@
 # FirstStep_BE
 
-<img width="1362" height="954" alt="Image" src="https://github.com/user-attachments/assets/348111b8-389e-407d-b24c-c33416789956" />
+<img width="1336" height="910" alt="Image" src="https://github.com/user-attachments/assets/61906ecf-60ab-416c-a21f-65da04bca56c" />
