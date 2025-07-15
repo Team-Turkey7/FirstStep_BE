@@ -1,5 +1,6 @@
 package com.example.firststep_server.domain.problem.service;
 
+import com.example.firststep_server.domain.problem.domain.Completion;
 import com.example.firststep_server.domain.problem.domain.repository.ProblemRepository;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,10 @@ public class QueryProblemsByDateService {
 
     @Transactional(readOnly = true)
     public List<ProblemResponse> execute(String date) {
+
+        Completion completion = new Completion();
+        completion.complete();
+
         return problemRepository.findByDateOrderByIdAsc(date);
     }
 }
