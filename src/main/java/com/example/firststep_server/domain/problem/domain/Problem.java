@@ -2,13 +2,19 @@ package com.example.firststep_server.domain.problem.domain;
 
 import com.example.firststep_server.domain.problem.domain.enums.Category;
 import jakarta.persistence.*;
+<<<<<<< Updated upstream
+=======
+import lombok.AllArgsConstructor;
+>>>>>>> Stashed changes
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Problem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +25,7 @@ public class Problem {
     private Category category;
 
     @Column(nullable = false, length = 50)
-    private String problemContent;
+    private String problem;
 
     @Column(length = 10)
     private String problemDetail;
@@ -30,7 +36,13 @@ public class Problem {
     @Column(nullable = false)
     private int level;
 
+    @Column(nullable = false)
+    private String date;
+
+    private boolean isCorrect;
+
     private String photoUrl;
 
     private String audioUrl;
+
 }
