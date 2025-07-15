@@ -4,6 +4,7 @@ import com.example.firststep_server.domain.problem.presentation.dto.request.Crea
 import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
 import com.example.firststep_server.domain.problem.service.CreateProblemService;
+import com.example.firststep_server.domain.problem.service.DeleteProblemService;
 import com.example.firststep_server.domain.problem.service.QueryProblemsByDateService;
 import com.example.firststep_server.domain.problem.service.UpdateProblemService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class ProblemController {
     private final QueryProblemsByDateService queryProblemsByDateService;
     private final CreateProblemService createProblemService;
     private final UpdateProblemService updateProblemService;
+    private final DeleteProblemService deleteProblemService;
 
     @GetMapping("/{date}")
     @ResponseStatus(HttpStatus.OK)
@@ -32,7 +34,12 @@ public class ProblemController {
     }
 
     @PatchMapping("/{id}")
-    public  void updateProblem(@PathVariable Long id, @RequestBody UpdateProblemRequest request) {
+    public void updateProblem(@PathVariable Long id, @RequestBody UpdateProblemRequest request) {
         updateProblemService.updateProblem(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProblem(@PathVariable Long id) {
+        deleteProblemService.deleteProblem(id);
     }
 }
