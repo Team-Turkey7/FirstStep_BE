@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Date {
+public class Completion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
