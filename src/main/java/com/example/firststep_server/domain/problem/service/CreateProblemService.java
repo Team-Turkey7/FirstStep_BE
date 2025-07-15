@@ -5,25 +5,34 @@ import com.example.firststep_server.domain.problem.domain.Problem;
 import com.example.firststep_server.domain.problem.domain.repository.CompletionRepository;
 import com.example.firststep_server.domain.problem.domain.repository.ProblemRepository;
 import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
+import com.example.firststep_server.infrastructure.s3.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
 public class CreateProblemService {
     private final ProblemRepository problemRepository;
     private final CompletionRepository completionRepository;
+    private final S3Service s3Service;
 
-    public void createProblem(CreateProblemRequest createProblemRequest) {
+    @Transactional
+    public void createProblem(MultipartFile audio, MultipartFile image, CreateProblemRequest createProblemRequest) {
+
+        String audioUrl = s3Service.upload(audio);
+        String photoUrl = s3Service.upload(image);
+
         problemRepository.save(
                 Problem.builder()
                         .category(createProblemRequest.getCategory())
                         .date(createProblemRequest.getDate())
                         .problem(createProblemRequest.getProblem())
                         .problemDetail(createProblemRequest.getProblemDetail())
-                        .photoUrl(createProblemRequest.getPhotoUrl())
+                        .photoUrl(photoUrl)
                         .answer(createProblemRequest.getAnswer())
-                        .audioUrl(createProblemRequest.getAudioUrl())
+                        .audioUrl(audioUrl)
                         .level(createProblemRequest.getLevel())
                         .isCorrect(false)
                         .build()
