@@ -20,6 +20,13 @@ public class UserIncorrectAnswer {
     @Column(nullable = false)
     private String answer;
 
+    @Column(nullable = false)
+    private String problem;
+
+    private String problemDetail;
+
+    private String date;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private User user;
