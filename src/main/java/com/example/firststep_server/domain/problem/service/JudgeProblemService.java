@@ -16,10 +16,8 @@ import org.springframework.stereotype.Service;
 public class JudgeProblemService {
     private final ProblemRepository problemRepository;
     private final UserIncorrectAnswerRepository userIncorrectAnswerRepository;
-    private final UserFacade userFacade;
 
     public boolean execute(JudgementProblemRequest request) {
-        User user = userFacade.currentUser();
 
         Problem problem = problemRepository.findById(request.getId())
                 .orElseThrow(() -> ProblemNotFoundException.EXCEPTION);
@@ -30,7 +28,6 @@ public class JudgeProblemService {
                             .problemDetail(problem.getProblemDetail())
                             .answer(problem.getProblem())
                             .date(problem.getDate())
-                            .user(user)
                     .build());
 
             problem.markAsCorrect();
