@@ -1,6 +1,5 @@
 package com.example.firststep_server.domain.problem.presentation;
 
-import com.example.firststep_server.domain.problem.domain.repository.ProblemRepository;
 import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
 import com.example.firststep_server.domain.problem.service.CreateProblemService;
@@ -26,6 +25,8 @@ public class ProblemController {
 
     @PostMapping()
     public void createProblem(@RequestBody CreateProblemRequest request) {
-        createProblemService.excute(request);
+        System.out.println(request.getPhotoUrl());
+        System.out.println(request.getAudioUrl());
+        createProblemService.execute(request);
     }
 }

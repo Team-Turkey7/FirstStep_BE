@@ -1,7 +1,6 @@
 spring:
   jackson:
     time-zone: Asia/Seoul
-    property-naming-strategy: SNAKE_CASE
 
   main:
     allow-bean-definition-overriding: true

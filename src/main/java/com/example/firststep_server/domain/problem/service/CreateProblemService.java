@@ -11,14 +11,20 @@ import org.springframework.stereotype.Service;
 public class CreateProblemService {
     private final ProblemRepository problemRepository;
 
-    public void excute(CreateProblemRequest createProblemRequest) {
+    public void execute(CreateProblemRequest createProblemRequest) {
+        System.out.println(createProblemRequest.getPhotoUrl());
+        System.out.println(createProblemRequest.getAudioUrl());
+
         problemRepository.save(
                 Problem.builder()
                         .category(createProblemRequest.getCategory())
                         .date(createProblemRequest.getDate())
                         .problem(createProblemRequest.getProblem())
                         .problemDetail(createProblemRequest.getProblemDetail())
+                        .answer(createProblemRequest.getAnswer())
                         .photoUrl(createProblemRequest.getPhotoUrl())
+                        .audioUrl(createProblemRequest.getAudioUrl())
+                        .level(createProblemRequest.getLevel())
                         .build()
         );
     }
