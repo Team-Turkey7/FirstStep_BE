@@ -4,6 +4,7 @@ import com.example.firststep_server.domain.problem.presentation.dto.request.Crea
 import com.example.firststep_server.domain.problem.presentation.dto.request.JudgementProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
+import com.example.firststep_server.domain.problem.presentation.dto.response.WrongProblemResponse;
 import com.example.firststep_server.domain.problem.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class ProblemController {
     private final DeleteProblemService deleteProblemService;
     private final QueryCompletionStatusService queryCompletionStatusService;
     private final JudgeProblemService judgeProblemService;
+    private final QueryWrongProblemsService queryWrongProblemsService;
 
     @PostMapping
     public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
@@ -41,6 +43,12 @@ public class ProblemController {
     @ResponseStatus(HttpStatus.OK)
     public boolean queryProblemStatus(@PathVariable String date) {
         return queryCompletionStatusService.execute(date);
+    }
+
+    @GetMapping("/mypage")
+    @ResponseStatus(HttpStatus.OK)
+    public List<WrongProblemResponse> queryWrongProblems() {
+        return queryWrongProblemsService.queryWrongProblems();
     }
 
     @PostMapping("/judge")
