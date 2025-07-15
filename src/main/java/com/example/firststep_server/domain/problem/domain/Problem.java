@@ -2,6 +2,7 @@ package com.example.firststep_server.domain.problem.domain;
 
 import com.example.firststep_server.domain.problem.domain.enums.Category;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
