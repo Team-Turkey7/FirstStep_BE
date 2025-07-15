@@ -1,12 +1,11 @@
 package com.example.firststep_server.domain.problem.presentation;
 
 import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
+import com.example.firststep_server.domain.problem.presentation.dto.request.JudgementProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
-import com.example.firststep_server.domain.problem.service.CreateProblemService;
-import com.example.firststep_server.domain.problem.service.DeleteProblemService;
-import com.example.firststep_server.domain.problem.service.QueryProblemsByDateService;
-import com.example.firststep_server.domain.problem.service.UpdateProblemService;
+import com.example.firststep_server.domain.problem.service.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +20,13 @@ public class ProblemController {
     private final CreateProblemService createProblemService;
     private final UpdateProblemService updateProblemService;
     private final DeleteProblemService deleteProblemService;
+    private final QueryCompletionStatusService queryCompletionStatusService;
+    private final JudgeProblemService judgeProblemService;
+
+    @PostMapping
+    public void createProblem(@RequestBody CreateProblemRequest request) {
+        createProblemService.createProblem(request);
+    }
 
     @GetMapping("/{date}")
     @ResponseStatus(HttpStatus.OK)
@@ -28,9 +34,16 @@ public class ProblemController {
         return queryProblemsByDateService.execute(date);
     }
 
-    @PostMapping
-    public void createProblem(@RequestBody CreateProblemRequest request) {
-        createProblemService.createProblem(request);
+    @GetMapping("/completion/{date}")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean queryProblemStatus(@PathVariable String date) {
+        return queryCompletionStatusService.execute(date);
+    }
+
+    @GetMapping("/judge")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean judge(@RequestBody @Valid JudgementProblemRequest request) {
+        return judgeProblemService.execute(request);
     }
 
     @PatchMapping("/{id}")
