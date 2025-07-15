@@ -18,16 +18,16 @@ public class Problem {
     private Category category;
 
     @Column(nullable = false, length = 50)
-    private String problemName;
+    private String problemContent;
 
     @Column(length = 10)
     private String problemDetail;
 
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
     private String answer;
 
     @Column(nullable = false)
-    private boolean result;
+    private int level;
 
     private String photoUrl;
 
