@@ -1,9 +1,9 @@
 package com.example.firststep_server.domain.problem.presentation.dto.response;
 
 public record ProblemResponse(
-        Long problemId,
+        Long id,
         int level,
-        String problemContent,
+        String problem,
         String problemDetail,
         String date,
         String photoUrl,
