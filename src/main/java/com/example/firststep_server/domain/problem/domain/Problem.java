@@ -1,6 +1,7 @@
 package com.example.firststep_server.domain.problem.domain;
 
 import com.example.firststep_server.domain.problem.domain.enums.Category;
+import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,5 +45,15 @@ public class Problem {
 
     public void markAsCorrect() {
         this.isCorrect = true;
+    }
+
+    public void updateProblem(UpdateProblemRequest updateProblemRequest) {
+        this.category = updateProblemRequest.getCategory();
+        this.date = updateProblemRequest.getDate();
+        this.problem = updateProblemRequest.getProblem();
+        this.problemDetail = updateProblemRequest.getProblemDetail();
+        this.answer = updateProblemRequest.getAnswer();
+        this.level = updateProblemRequest.getLevel();
+        this.isCorrect = updateProblemRequest.isCorrect();
     }
 }
