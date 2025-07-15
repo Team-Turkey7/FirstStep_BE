@@ -19,6 +19,10 @@ public class CreateProblemService {
                         .problem(createProblemRequest.getProblem())
                         .problemDetail(createProblemRequest.getProblemDetail())
                         .photoUrl(createProblemRequest.getPhotoUrl())
+                        .answer(createProblemRequest.getAnswer())
+                        .audioUrl(createProblemRequest.getAudioUrl())
+                        .level(createProblemRequest.getLevel())
+                        .isCorrect(false)
                         .build()
         );
     }
