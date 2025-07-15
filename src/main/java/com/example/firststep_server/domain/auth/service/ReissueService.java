@@ -1,4 +1,4 @@
-package com.example.firststep_server.domain.auth.application;
+package com.example.firststep_server.domain.auth.service;
 
 import com.example.firststep_server.domain.auth.domain.RefreshToken;
 import com.example.firststep_server.domain.auth.domain.repository.RefreshTokenRepository;

@@ -1,4 +1,4 @@
-package com.example.firststep_server.domain.auth.application;
+package com.example.firststep_server.domain.auth.service;
 
 import com.example.firststep_server.domain.auth.presentation.dto.request.SignupRequest;
 import com.example.firststep_server.domain.user.domain.User;

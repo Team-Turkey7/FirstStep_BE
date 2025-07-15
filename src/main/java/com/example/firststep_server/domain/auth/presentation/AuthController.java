@@ -1,9 +1,9 @@
 package com.example.firststep_server.domain.auth.presentation;
 
-import com.example.firststep_server.domain.auth.application.LoginService;
-import com.example.firststep_server.domain.auth.application.LogoutService;
-import com.example.firststep_server.domain.auth.application.ReissueService;
-import com.example.firststep_server.domain.auth.application.SignupService;
+import com.example.firststep_server.domain.auth.service.LoginService;
+import com.example.firststep_server.domain.auth.service.LogoutService;
+import com.example.firststep_server.domain.auth.service.ReissueService;
+import com.example.firststep_server.domain.auth.service.SignupService;
 import com.example.firststep_server.domain.auth.presentation.dto.request.LoginRequest;
 import com.example.firststep_server.domain.auth.presentation.dto.request.RefreshTokenRequest;
 import com.example.firststep_server.domain.auth.presentation.dto.request.SignupRequest;
