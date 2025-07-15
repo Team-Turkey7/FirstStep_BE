@@ -42,4 +42,8 @@ public class Problem {
 
     private String audioUrl;
 
+    public void markAsCorrect() {
+        this.isCorrect = true;
+    }
+
 }
