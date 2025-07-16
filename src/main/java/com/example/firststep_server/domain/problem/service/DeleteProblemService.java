@@ -19,7 +19,6 @@ public class DeleteProblemService {
         Problem problem = problemRepository.findById(id)
                         .orElseThrow(() -> ProblemNotFoundException.EXCEPTION);
 
-        s3Service.delete(problem.getAudioUrl());
         s3Service.delete(problem.getPhotoUrl());
 
         problemRepository.delete(problem);
