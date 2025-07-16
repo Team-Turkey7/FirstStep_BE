@@ -3,6 +3,7 @@ package com.example.firststep_server.domain.problem.presentation;
 import com.example.firststep_server.domain.problem.domain.Completion;
 import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.JudgementProblemRequest;
+import com.example.firststep_server.domain.problem.presentation.dto.request.ProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
 import com.example.firststep_server.domain.problem.presentation.dto.response.WrongProblemResponse;
@@ -27,6 +28,7 @@ public class ProblemController {
     private final JudgeProblemService judgeProblemService;
     private final QueryWrongProblemsService queryWrongProblemsService;
     private final QueryAllCompletionStatusService queryAllCompletionStatusService;
+    private final QueryProblemByCategoryAndDateService queryProblemByCategoryAndDateService;
 
     @PostMapping
     public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
@@ -51,6 +53,12 @@ public class ProblemController {
     @ResponseStatus(HttpStatus.OK)
     public List<WrongProblemResponse> queryWrongProblems() {
         return queryWrongProblemsService.queryWrongProblems();
+    }
+
+    @GetMapping("/category")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProblemResponse> queryProblemByCategoryAndDate(@RequestBody @Valid ProblemRequest request) {
+        return queryProblemByCategoryAndDateService.execute(request);
     }
 
     @GetMapping("/completion")
