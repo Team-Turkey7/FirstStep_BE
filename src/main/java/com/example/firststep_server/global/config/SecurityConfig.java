@@ -32,50 +32,65 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-
-        HttpSecurity with = httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-
-                .cors(cors -> cors
-                        .configurationSource(corsConfigurationSource())
-                )
-
-                .headers(headers -> {
-                            headers
-                                    .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin
-                                    );
-                        }
-                )
-
-                .sessionManagement(sessionManagement -> sessionManagement
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-
-                .authorizeHttpRequests(authorize -> authorize
-
-                        .requestMatchers( "/user/**", "/auth/**", "/problem/**")
-                        .permitAll()
-                )
-
-                .with(new FilterConfig(jwtTokenProvider, objectMapper), Customizer.withDefaults());
-
-        return httpSecurity.build();
-
-    }
-
+    //    @Bean
+//    protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
+//
+//        HttpSecurity with = httpSecurity
+//                .csrf(AbstractHttpConfigurer::disable)
+//
+//                .cors(cors -> cors
+//                        .configurationSource(corsConfigurationSource())
+//                )
+//
+//                .headers(headers -> {
+//                            headers
+//                                    .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin
+//                                    );
+//                        }
+//                )
+//
+//                .sessionManagement(sessionManagement -> sessionManagement
+//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                )
+//
+//                .authorizeHttpRequests(authorize -> authorize
+//
+//                        .requestMatchers( "/user/**", "/auth/**", "/problem/**")
+//                        .permitAll()
+//                )
+//
+//                .with(new FilterConfig(jwtTokenProvider, objectMapper), Customizer.withDefaults());
+//
+//        return httpSecurity.build();
+//
+//    }
+//
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of("*")); // 모든 도메인 허용
-        configuration.setAllowedMethods(Arrays.asList( "OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")); // HTTP 메서드 허용
+        configuration.setAllowedMethods(Arrays.asList("OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")); // HTTP 메서드 허용
         configuration.setAllowCredentials(false);
         configuration.addAllowedHeader("*"); // 모든 헤더 허용
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // 모든 경로에 대해 위에서 설정한 CORS 설정 적용
         return source;
+    }
+
+    @Bean
+    protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().permitAll() // ✅ 모든 요청 허용
+                );
+
+        return httpSecurity.build(); // ✅ jwt 관련 필터도 제거함
+
     }
 }
