@@ -25,12 +25,15 @@ public class JudgeProblemService {
         if (!problem.getAnswer().equals(request.getUserAnswer())) {
             userIncorrectAnswerRepository.save(UserIncorrectAnswer.builder()
                             .problem(problem.getProblem())
+                            .category(problem.getCategory())
+                            .photoUrl(problem.getPhotoUrl())
                             .problemDetail(problem.getProblemDetail())
-                            .answer(problem.getProblem())
+                            .answer(problem.getAnswer())
                             .date(problem.getDate())
                     .build());
 
             problem.markAsCorrect();
+            problemRepository.save(problem);
         }
 
         return problem.isCorrect();
