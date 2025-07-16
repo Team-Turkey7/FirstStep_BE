@@ -43,8 +43,12 @@ public class Problem {
 
     private String audioUrl;
 
-    public void markAsCorrect() {
+    public void markAsWrong() {
         this.isCorrect = true;
+    }
+
+    public void markAsCorrect() {
+        this.isCorrect = false;
     }
 
     public void updateProblem(UpdateProblemRequest updateProblemRequest) {
