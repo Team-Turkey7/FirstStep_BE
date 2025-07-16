@@ -5,6 +5,7 @@ import com.example.firststep_server.domain.problem.domain.enums.Category;
 public record ProblemResponse(
         Long id,
         Category category,
+        boolean isCorrect,
         int level,
         String problem,
         String problemDetail,
