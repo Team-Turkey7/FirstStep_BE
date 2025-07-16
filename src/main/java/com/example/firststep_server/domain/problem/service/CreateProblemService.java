@@ -22,9 +22,8 @@ public class CreateProblemService {
     private final S3Service s3Service;
 
     @Transactional
-    public void createProblem(MultipartFile audio, MultipartFile image, CreateProblemRequest createProblemRequest) {
+    public void createProblem(MultipartFile image, CreateProblemRequest createProblemRequest) {
 
-        String audioUrl = s3Service.upload(audio);
         String photoUrl = s3Service.upload(image);
 
         problemRepository.save(
@@ -35,7 +34,6 @@ public class CreateProblemService {
                         .problemDetail(createProblemRequest.getProblemDetail())
                         .photoUrl(photoUrl)
                         .answer(createProblemRequest.getAnswer())
-                        .audioUrl(audioUrl)
                         .level(createProblemRequest.getLevel())
                         .isCorrect(false)
                         .build()

@@ -32,9 +32,8 @@ public class ProblemController {
 
     @PostMapping
     public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
-                              @RequestPart(name = "audio") MultipartFile audio,
                               @RequestPart(name = "image") MultipartFile image) {
-        createProblemService.createProblem(audio, image, request);
+        createProblemService.createProblem(image, request);
     }
 
     @GetMapping("/{date}")
