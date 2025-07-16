@@ -21,7 +21,7 @@ public class QueryProblemsByDateService {
     public List<ProblemResponse> execute(String date) {
 
         Completion completion = completionRepository.findByDate(date)
-                .orElseThrow(() -> CompletionNotFoundException.EXCEPTION);
+                .orElseThrow();
 
         completion.complete();
 
