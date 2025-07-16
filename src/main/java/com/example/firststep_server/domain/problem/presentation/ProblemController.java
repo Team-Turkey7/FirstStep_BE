@@ -54,7 +54,7 @@ public class ProblemController {
         return queryWrongProblemsService.queryWrongProblems();
     }
 
-    @GetMapping("/category")
+    @PostMapping("/category")
     @ResponseStatus(HttpStatus.OK)
     public List<ProblemResponse> queryProblemByCategoryAndDate(@RequestBody @Valid ProblemRequest request) {
         return queryProblemByCategoryAndDateService.execute(request);
