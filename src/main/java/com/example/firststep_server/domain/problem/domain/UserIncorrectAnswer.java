@@ -1,5 +1,6 @@
 package com.example.firststep_server.domain.problem.domain;
 
+import com.example.firststep_server.domain.problem.domain.enums.Category;
 import com.example.firststep_server.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,11 @@ public class UserIncorrectAnswer {
 
     @Column(nullable = false)
     private String problem;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    private String photoUrl;
 
     private String problemDetail;
 
