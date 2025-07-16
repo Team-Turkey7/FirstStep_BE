@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CreateProblemService {
@@ -38,11 +41,16 @@ public class CreateProblemService {
                         .build()
         );
 
-        completionRepository.save(
-                Completion.builder()
-                        .date(createProblemRequest.getDate())
-                        .isComplete(false)
-                        .build()
-        );
+        List<Completion> found = completionRepository.findAllByDate(createProblemRequest.getDate());
+
+        if (found.isEmpty()) {
+            completionRepository.save(
+                    Completion.builder()
+                            .date(createProblemRequest.getDate())
+                            .isComplete(false)
+                            .build()
+            );
+        }
+
     }
 }
