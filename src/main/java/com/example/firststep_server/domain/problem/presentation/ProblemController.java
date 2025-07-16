@@ -1,5 +1,6 @@
 package com.example.firststep_server.domain.problem.presentation;
 
+import com.example.firststep_server.domain.problem.domain.Completion;
 import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.JudgementProblemRequest;
 import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
@@ -25,6 +26,7 @@ public class ProblemController {
     private final QueryCompletionStatusService queryCompletionStatusService;
     private final JudgeProblemService judgeProblemService;
     private final QueryWrongProblemsService queryWrongProblemsService;
+    private final QueryAllCompletionStatusService queryAllCompletionStatusService;
 
     @PostMapping
     public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
@@ -49,6 +51,12 @@ public class ProblemController {
     @ResponseStatus(HttpStatus.OK)
     public List<WrongProblemResponse> queryWrongProblems() {
         return queryWrongProblemsService.queryWrongProblems();
+    }
+
+    @GetMapping("/completion")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Completion> queryCompletions() {
+        return queryAllCompletionStatusService.execute();
     }
 
     @PostMapping("/judge")
