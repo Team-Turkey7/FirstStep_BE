@@ -22,7 +22,7 @@ public class Problem {
     @Column(nullable = false)
     private Category category;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String problem;
 
     @Column(length = 10)
