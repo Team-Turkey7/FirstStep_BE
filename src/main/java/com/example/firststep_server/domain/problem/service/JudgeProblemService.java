@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class JudgeProblemService {
 
         if (!problem.getAnswer().equals(request.getUserAnswer())) {
 
-            List<UserIncorrectAnswer> found = userIncorrectAnswerRepository.findByAnswer(request.getUserAnswer());
+            Optional<UserIncorrectAnswer> found = userIncorrectAnswerRepository.findById(problem.getId());
 
             if (found.isEmpty()) {
                 userIncorrectAnswerRepository.save(UserIncorrectAnswer.builder()
