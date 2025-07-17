@@ -1,10 +1,7 @@
 package com.example.firststep_server.domain.problem.presentation;
 
 import com.example.firststep_server.domain.problem.domain.Completion;
-import com.example.firststep_server.domain.problem.presentation.dto.request.CreateProblemRequest;
-import com.example.firststep_server.domain.problem.presentation.dto.request.JudgementProblemRequest;
-import com.example.firststep_server.domain.problem.presentation.dto.request.ProblemRequest;
-import com.example.firststep_server.domain.problem.presentation.dto.request.UpdateProblemRequest;
+import com.example.firststep_server.domain.problem.presentation.dto.request.*;
 import com.example.firststep_server.domain.problem.presentation.dto.response.ProblemResponse;
 import com.example.firststep_server.domain.problem.presentation.dto.response.WrongProblemResponse;
 import com.example.firststep_server.domain.problem.service.*;
@@ -29,11 +26,17 @@ public class ProblemController {
     private final QueryWrongProblemsService queryWrongProblemsService;
     private final QueryAllCompletionStatusService queryAllCompletionStatusService;
     private final QueryProblemByCategoryAndDateService queryProblemByCategoryAndDateService;
+    private final ChangeStatusService changeStatusService;
 
     @PostMapping
     public void createProblem(@RequestPart(name = "request") CreateProblemRequest request,
                               @RequestPart(name = "image") MultipartFile image) {
         createProblemService.createProblem(image, request);
+    }
+
+    @PostMapping("/change")
+    public void changeStatus(@RequestBody @Valid ChangeRequest request) {
+        changeStatusService.execute(request);
     }
 
     @GetMapping("/{date}")
