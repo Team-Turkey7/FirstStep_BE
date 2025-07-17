@@ -25,7 +25,7 @@ public class Problem {
     @Column(nullable = false, length = 100)
     private String problem;
 
-    @Column(length = 10)
+    @Column(length = 100)
     private String problemDetail;
 
     @Column(length = 10)
