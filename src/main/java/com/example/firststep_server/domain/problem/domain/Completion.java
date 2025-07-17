@@ -23,4 +23,8 @@ public class Completion {
     public void complete() {
         this.isComplete = true;
     }
+
+    public void change() {
+        this.isComplete = false;
+    }
 }
